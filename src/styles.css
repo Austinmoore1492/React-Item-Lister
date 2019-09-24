@@ -1,0 +1,27 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  line-height: 1.4;
+  background: #f1f1f1;
+}
+
+a {
+  color: #333;
+  text-decoration: none;
+}
+
+.items {
+  transition: all 0.5s ease;
+}
+.items:hover {
+  box-shadow: 5px 5px 6px #5ea7ff;
+  transform: translateY(-3px);
+}
+
+input[type="checkbox"] {
+  cursor: pointer;
+}
