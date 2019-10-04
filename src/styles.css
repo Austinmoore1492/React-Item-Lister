@@ -1,12 +1,18 @@
+@import url('//fonts.googleapis.com/css?family=Raleway&display=swap');
+
 * {
   margin: 0;
   padding: 0;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
 }
 
 body {
-  font-family: Arial, Helvetica, sans-serif;
-  line-height: 1.4;
+  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  /* line-height: 1.4; */
   background: #f1f1f1;
+  text-transform: capitalize;
 }
 
 a {
@@ -14,14 +20,114 @@ a {
   text-decoration: none;
 }
 
-.items {
-  transition: all 0.5s ease;
-}
-.items:hover {
-  box-shadow: 5px 5px 6px #5ea7ff;
-  transform: translateY(-3px);
+.navStyle {
+  margin: auto;
+  width: 75%;
+  color: #f1f1f1;
+  padding: 0.5rem;
 }
 
-input[type="checkbox"] {
+.inputForm {
+  border: none;
+  border-bottom: 2px solid #1d1d1d;
+  font-size: 1.2rem;
+  padding: 5px;
+  margin-right: 1rem;
+}
+
+.items,
+input {
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.items {
+  position: relative;
+  font-weight: normal;
+}
+
+input[type='checkbox'] {
   cursor: pointer;
+  position: absolute;
+  top: 10%;
+  left: 1%;
+}
+
+.btn {
+  border: none;
+  font-size: 1.2rem;
+  padding: 5px;
+  background: #167dfa;
+  color: #f1f1f1;
+  cursor: pointer;
+}
+
+.delBtn {
+  position: absolute;
+  bottom: 10%;
+  right: 1%;
+  margin-left: 10px;
+  background: #ff0000;
+  color: #fff;
+  padding: 1px 4px;
+  border-radius: 2px;
+  border: none;
+  float: right;
+  cursor: pointer;
+  -webkit-transition: all 0.5s ease;
+  -o-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.btn:disabled {
+  -webkit-transform: translateY(0px);
+  -ms-transform: translateY(0px);
+  transform: translateY(0px);
+  background: grey;
+  cursor: not-allowed;
+}
+
+@media (min-width: 701px) {
+  .items:hover,
+  .btn:hover:enabled {
+    -webkit-box-shadow: 5px 5px 6px #5ea7ff;
+    box-shadow: 5px 5px 6px #5ea7ff;
+    -webkit-transform: translateY(-3px);
+    -ms-transform: translateY(-3px);
+    transform: translateY(-3px);
+  }
+  .items:hover {
+    background: #ddd;
+  }
+  .delBtn:hover {
+    background: #fff;
+    color: #ff0000;
+  }
+  .btn:active:enabled {
+    -webkit-transition: all 0.2s ease;
+    -o-transition: all 0.2s ease;
+    transition: all 0.2s ease;
+    background: green;
+    -webkit-transform: translateY(5px);
+    -ms-transform: translateY(5px);
+    transform: translateY(5px);
+  }
+  .items:active-within {
+    opacity: 0;
+  }
+}
+
+@media (max-width: 700px) {
+  .navStyle {
+    width: 100%;
+  }
+  .inputForm {
+    display: block;
+    margin: auto;
+    margin-bottom: 1rem;
+  }
+  input[type='checkbox'] {
+    margin-right: 5px;
+  }
 }

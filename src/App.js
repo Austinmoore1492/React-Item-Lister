@@ -1,53 +1,74 @@
-import React, { Component } from "react";
-import Todos from "./components/Todos";
-import NavBar from "./components/NavBar";
+import React, { Component } from 'react';
+import uuid from 'uuid';
+import Items from './components/Items';
+import NavBar from './components/NavBar';
+import AddItem from './components/AddItem';
 
 class App extends Component {
+  //Set State to Local Storage or empty array if nothing is in Local Storage
   state = {
-    todos: [
-      {
-        id: 1,
-        title: "Learn React",
-        completed: false
-      },
-      {
-        id: 2,
-        title: "Use React for a project",
-        completed: false
-      },
-      {
-        id: 3,
-        title: "Learn Typescript",
-        completed: false
-      }
-    ]
+    items: JSON.parse(window.localStorage.getItem('savedItems')) || []
   };
 
+  //Ensure that when a user leaves the component the current state is saved in Local Storage
+  componentWillUnmount() {
+    window.localStorage.setItem('savedItems', JSON.stringify(this.state.items));
+  }
+
+  //Mark Items as complete and update Local Storage
   markComplete = id => {
     this.setState({
-      todos: this.state.todos.map(todo => {
-        if (todo.id === id) {
-          todo.completed = !todo.completed;
+      items: this.state.items.map(item => {
+        if (item.id === id) {
+          item.completed = !item.completed;
         }
-        return todo;
+        return item;
       })
     });
+    window.localStorage.setItem('savedItems', JSON.stringify(this.state.items));
   };
 
-  delTodo = id => {
-    this.setState({
-      todos: [...this.state.todos.filter(todo => todo.id !== id)]
-    });
+  //Add new item and save it to Local Storage
+  addItem = title => {
+    if (title !== '') {
+      const newItem = {
+        id: uuid.v4(),
+        title,
+        completed: false
+      };
+
+      this.setState({ items: [...this.state.items, newItem] }, () =>
+        window.localStorage.setItem(
+          'savedItems',
+          JSON.stringify(this.state.items)
+        )
+      );
+    }
+  };
+
+  //Delete item and reset Local Storage
+  delItems = id => {
+    this.setState(
+      {
+        items: [...this.state.items.filter(item => item.id !== id)]
+      },
+      () =>
+        window.localStorage.setItem(
+          'savedItems',
+          JSON.stringify(this.state.items)
+        )
+    );
   };
 
   render() {
     return (
       <div className="App">
         <NavBar />
-        <Todos
-          todos={this.state.todos}
+        <AddItem addItem={this.addItem} />
+        <Items
+          items={this.state.items}
           markComplete={this.markComplete}
-          delTodo={this.delTodo}
+          delItems={this.delItems}
         />
       </div>
     );

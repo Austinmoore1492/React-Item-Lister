@@ -1,13 +1,15 @@
 {
-  "name": "new",
-  "version": "1.0.0",
-  "description": "",
-  "keywords": [],
+  "name": "React Item Lister",
+  "autho": "Austin Moore",
+  "version": "1.1.0",
+  "description": "List your items with this React Powered web app",
+  "keywords": ["Shopping List", "Items", "List", "React"],
   "main": "src/index.js",
   "dependencies": {
-    "react": "16.8.6",
-    "react-dom": "16.8.6",
-    "react-scripts": "3.0.1"
+    "react": "16.10.1",
+    "react-dom": "16.10.1",
+    "react-scripts": "3.0.1",
+    "uuid": "3.3.3"
   },
   "devDependencies": {
     "typescript": "3.3.3"
