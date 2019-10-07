@@ -18,14 +18,17 @@ export class ItemsList extends Component {
     const { id, title } = this.props.item;
 
     return (
-      <div id="items" className="items" style={this.getStyle()}>
+      <div
+        className={this.props.item.deleted ? 'animated zoomOut' : 'items'}
+        style={this.getStyle()}
+      >
         <div>
           <input
             type="checkbox"
             onChange={this.props.markComplete.bind(this, id)}
           />
           <p
-            className="animated zoomIn"
+            className="animated rotateInDownRight"
             style={{
               textDecoration: this.props.item.completed
                 ? 'line-through'
@@ -43,7 +46,7 @@ export class ItemsList extends Component {
             }}
             className="animated fadeIn delay-1s"
           >
-            {this.props.item.completed ? ' Completed' : 'Not Completed'}
+            {this.props.item.completed ? 'Completed' : 'Not Completed'}
           </p>
           <button
             onClick={this.props.delItems.bind(this, id)}

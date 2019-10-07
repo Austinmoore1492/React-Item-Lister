@@ -34,6 +34,7 @@ class App extends Component {
       const newItem = {
         id: uuid.v4(),
         title,
+        deleted: false,
         completed: false
       };
 
@@ -48,16 +49,27 @@ class App extends Component {
 
   //Delete item and reset Local Storage
   delItems = id => {
-    this.setState(
-      {
-        items: [...this.state.items.filter(item => item.id !== id)]
-      },
-      () =>
-        window.localStorage.setItem(
-          'savedItems',
-          JSON.stringify(this.state.items)
-        )
-    );
+    this.setState({
+      items: this.state.items.map(item => {
+        if (item.id === id) {
+          item.deleted = !item.deleted;
+        }
+        return item;
+      })
+    });
+
+    setTimeout(() => {
+      this.setState(
+        {
+          items: [...this.state.items.filter(item => item.id !== id)]
+        },
+        () =>
+          window.localStorage.setItem(
+            'savedItems',
+            JSON.stringify(this.state.items)
+          )
+      );
+    }, 500);
   };
 
   render() {
