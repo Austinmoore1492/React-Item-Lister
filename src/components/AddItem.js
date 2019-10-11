@@ -36,7 +36,6 @@ export class AddItem extends Component {
           type="text"
           name="title"
           className="inputForm"
-          style={{}}
           placeholder="Add An Item ..."
           value={this.state.title}
           onChange={this.onChange}
