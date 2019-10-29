@@ -1,4 +1,4 @@
-# Nasa Picture of the day
+# React Item Lister
 
 Item Lister Built with React and Deployed to Netlify.
 
