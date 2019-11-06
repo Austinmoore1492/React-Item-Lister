@@ -1,0 +1,22 @@
+{
+  "name":"Item Lister",
+  "short_name":"Welcome",
+  "icons":[
+    {
+      "src":"./android-chrome-192x192.png",
+      "sizes":"192x192",
+      "type":"image/png"
+    },
+    {
+      "src":"./android-chrome-512x512.png",
+      "sizes":"512x512",
+      "type":"image/png"
+    }
+  ],
+  "theme_color":"#8c0005",
+  "background_color":"#c9c9c9",
+  "display":"standalone",
+  "Scope": "../",
+  "start_url": "../index.html",
+  "splash_pages": null
+}

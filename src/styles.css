@@ -1,4 +1,4 @@
-@import url('//fonts.googleapis.com/css?family=Raleway&display=swap');
+@import url("//fonts.googleapis.com/css?family=Raleway&display=swap");
 
 * {
   margin: 0;
@@ -9,7 +9,7 @@
 }
 
 body {
-  font-family: 'Raleway', Arial, Helvetica, sans-serif;
+  font-family: "Raleway", Arial, Helvetica, sans-serif;
   /* line-height: 1.4; */
   background: #f1f1f1;
   text-transform: capitalize;
@@ -48,7 +48,7 @@ input {
   font-weight: normal;
 }
 
-input[type='checkbox'] {
+input[type="checkbox"] {
   cursor: pointer;
   position: absolute;
   top: 10%;
@@ -128,7 +128,7 @@ input[type='checkbox'] {
     margin: auto;
     margin-bottom: 1rem;
   }
-  input[type='checkbox'] {
+  input[type="checkbox"] {
     margin-right: 5px;
   }
 }
