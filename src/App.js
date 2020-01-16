@@ -16,11 +16,12 @@ class App extends Component {
   }
 
   //Mark Items as complete and update Local Storage
-  markComplete = id => {
+  markComplete = (id, finished) => {
     this.setState({
       items: this.state.items.map(item => {
         if (item.id === id) {
           item.completed = !item.completed;
+          item.finished = Date.now();
         }
         return item;
       })
@@ -29,12 +30,13 @@ class App extends Component {
   };
 
   //Add new item and save it to Local Storage
-  addItem = (title, created) => {
+  addItem = (title, created, finished) => {
     if (title !== '') {
       const newItem = {
         id: uuid.v4(),
         title,
         created: Date.now(),
+        finished: null,
         deleted: false,
         completed: false
       };

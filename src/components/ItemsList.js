@@ -16,7 +16,7 @@ export class ItemsList extends Component {
   };
 
   render() {
-    const { id, title, created } = this.props.item;
+    const { id, title, created, finished } = this.props.item;
 
     return (
       <div
@@ -27,6 +27,7 @@ export class ItemsList extends Component {
           <input
             type="checkbox"
             onChange={this.props.markComplete.bind(this, id)}
+            disabled={this.props.item.completed}
           />
           <p
             className="animated rotateInDownRight"
@@ -40,15 +41,29 @@ export class ItemsList extends Component {
           >
             {title}
           </p>
-          <p
-            className="animated rotateInDownRight"
-            style={{
-              paddingBottom: '0.5rem'
-            }}
-          >
-            Assigned: <Moment format="MM/DD/YYYY">{created}</Moment> at{' '}
-            <Moment format="HH:mm">{created}</Moment>
-          </p>
+          {this.props.item.created && (
+            <p
+              className="animated fadeIn delay-1s"
+              style={{
+                paddingBottom: '0.5rem'
+              }}
+            >
+              Assigned: <Moment format="MM/DD/YYYY">{created}</Moment> at{' '}
+              <Moment format="HH:mm">{created}</Moment>
+            </p>
+          )}
+          {this.props.item.finished && (
+            <p
+              className="animated fadeIn"
+              style={{
+                paddingBottom: '0.5rem'
+              }}
+            >
+              Finished: <Moment format="MM/DD/YYYY">{finished}</Moment> at{' '}
+              <Moment format="HH:mm">{finished}</Moment>
+            </p>
+          )}
+
           <p
             style={{
               textDecoration: 'none',
