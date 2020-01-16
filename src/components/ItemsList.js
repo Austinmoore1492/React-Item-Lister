@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
+import Moment from 'react-moment';
 
 export class ItemsList extends Component {
   //Set Style for component
@@ -15,7 +16,7 @@ export class ItemsList extends Component {
   };
 
   render() {
-    const { id, title } = this.props.item;
+    const { id, title, created } = this.props.item;
 
     return (
       <div
@@ -30,6 +31,7 @@ export class ItemsList extends Component {
           <p
             className="animated rotateInDownRight"
             style={{
+              paddingBottom: '0.5rem',
               textDecoration: this.props.item.completed
                 ? 'line-through'
                 : 'none',
@@ -37,6 +39,15 @@ export class ItemsList extends Component {
             }}
           >
             {title}
+          </p>
+          <p
+            className="animated rotateInDownRight"
+            style={{
+              paddingBottom: '0.5rem'
+            }}
+          >
+            Assigned: <Moment format="MM/DD/YYYY">{created}</Moment> at{' '}
+            <Moment format="HH:mm">{created}</Moment>
           </p>
           <p
             style={{
@@ -48,6 +59,7 @@ export class ItemsList extends Component {
           >
             {this.props.item.completed ? 'Completed' : 'Not Completed'}
           </p>
+
           <button
             onClick={this.props.delItems.bind(this, id)}
             className="delBtn"

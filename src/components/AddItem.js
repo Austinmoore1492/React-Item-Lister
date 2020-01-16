@@ -3,15 +3,17 @@ import PropTypes from 'prop-types';
 
 export class AddItem extends Component {
   state = {
-    title: ''
+    title: '',
+    created: null
   };
 
   //Create New Item and reset title to empty string
   onSubmit = e => {
     e.preventDefault();
-    this.props.addItem(this.state.title);
+    this.props.addItem(this.state.title, this.state.created);
     this.setState({
-      title: ''
+      title: '',
+      created: Date.now()
     });
   };
 

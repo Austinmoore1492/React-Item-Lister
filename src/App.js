@@ -29,11 +29,12 @@ class App extends Component {
   };
 
   //Add new item and save it to Local Storage
-  addItem = title => {
+  addItem = (title, created) => {
     if (title !== '') {
       const newItem = {
         id: uuid.v4(),
         title,
+        created: Date.now(),
         deleted: false,
         completed: false
       };
@@ -77,6 +78,7 @@ class App extends Component {
       <div className="App">
         <NavBar />
         <AddItem addItem={this.addItem} />
+
         <Items
           items={this.state.items}
           markComplete={this.markComplete}
