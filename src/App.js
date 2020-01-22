@@ -81,11 +81,20 @@ class App extends Component {
         <NavBar />
         <AddItem addItem={this.addItem} />
 
-        <Items
-          items={this.state.items}
-          markComplete={this.markComplete}
-          delItems={this.delItems}
-        />
+        <div className="container">
+          {this.state.items.length > 0 && (
+            <Items
+              items={this.state.items}
+              markComplete={this.markComplete}
+              delItems={this.delItems}
+            />
+          )}
+          {this.state.items.length === 0 && (
+            <div className="no-items">
+              <h1>Oops Nothing is here</h1>
+            </div>
+          )}
+        </div>
       </div>
     );
   }

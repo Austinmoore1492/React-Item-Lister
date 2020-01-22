@@ -11,7 +11,7 @@ export class ItemsList extends Component {
       paddingLeft: '30px',
       borderBottom: '2px solid #333',
       margin: '2rem auto',
-      width: '75%'
+      width: '80%'
     };
   };
 
